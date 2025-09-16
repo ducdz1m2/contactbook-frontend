@@ -15,12 +15,18 @@
                 <p v-else>Không có liên hệ nào.</p>
 
                 <div class="mt-3 d-flex justify-content-between">
+                    <button class="btn btn-sm btn-info" @click="refreshList">
+                        <i class="fas fa-sync-alt"></i> Làm mới
+                    </button>
+
                     <button class="btn btn-sm btn-success" @click="goToAddContact">
                         <i class="fas fa-plus"></i> Thêm mới
                     </button>
+
                     <button class="btn btn-sm btn-danger" @click="removeAllContacts">
                         <i class="fas fa-trash"></i> Xóa tất cả
                     </button>
+
                 </div>
             </div>
             <div class="col-md-6">
@@ -29,6 +35,12 @@
                         Chi tiết liên hệ <i class="fas fa-address-card"></i>
                     </h4>
                     <ContactCard :contact="activeContact" />
+                    <router-link :to="{ name: 'contact.edit', params: { id: activeContact._id } }">
+                        <button class="btn btn-sm btn-warning mt-2">
+                            <i class="fas fa-edit"></i> Hiệu chỉnh
+                        </button>
+                    </router-link>
+
                 </div>
             </div>
         </div>
